@@ -934,6 +934,265 @@
                     }
                 }
             }
+        },
+        "comment" : "reservations",
+        "/reservations/{room_number}" : {
+            "get": {
+                "operationId": "reservations_room_number",
+                "tags": [
+                    "Reservations"
+                ],
+                "description": "Récupère la liste des réservations d'une chambre donnée",
+                "parameters": [
+                    {
+                        "name": "room_number",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "id_reservation": {
+                                        "type": "integer"
+                                    },
+                                    "id_client": {
+                                        "type": "integer"
+                                    },
+                                    "id_room": {
+                                        "type": "integer"
+                                    },
+                                    "date_start": {
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "date_end": {
+                                        "type": "string",
+                                        "format": "date"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/reservations/validated" : {
+            "get": {
+                "operationId": "reservations_validated",
+                "tags": [
+                    "Reservations"
+                ],
+                "description": "Récupère la liste des réservations validées",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "id_reservation": {
+                                        "type": "integer"
+                                    },
+                                    "id_client": {
+                                        "type": "integer"
+                                    },
+                                    "id_room": {
+                                        "type": "integer"
+                                    },
+                                    "date_start": {
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "date_end": {
+                                        "type": "string",
+                                        "format": "date"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/reservations/passed" : {
+            "get": {
+                "operationId": "reservations_passed",
+                "tags": [
+                    "Reservations"
+                ],
+                "description": "Récupère la liste des réservations passées",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "id_reservation": {
+                                        "type": "integer"
+                                    },
+                                    "id_client": {
+                                        "type": "integer"
+                                    },
+                                    "id_room": {
+                                        "type": "integer"
+                                    },
+                                    "date_start": {
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "date_end": {
+                                        "type": "string",
+                                        "format": "date"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/reservations/cost_average" : {
+            "get": {
+                "operationId": "cost_average",
+                "tags": [
+                    "Reservations"
+                ],
+                "description": "Récupère le coût moyen des réservations",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "number",
+                            "properties": {
+                                "Coût Moyen": {
+                                    "type": "number",
+                                    "format": "float"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/reservations/total_cost" : {
+            "get": {
+                "operationId": "total_cost",
+                "tags": [
+                    "Reservations"
+                ],
+                "description": "Récupère le coût total des réservations",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "number",
+                            "properties": {
+                                "Coût Total": {
+                                    "type": "number",
+                                    "format": "float"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/reservations/type/{type}" : {
+            "get": {
+                "operationId": "reservations_type",
+                "tags": [
+                    "Reservations"
+                ],
+                "description": "Récupère la liste des réservations d'un certain type de chambre",
+                "parameters": [
+                    {
+                        "name": "type",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "id_reservation": {
+                                        "type": "integer"
+                                    },
+                                    "id_client": {
+                                        "type": "integer"
+                                    },
+                                    "id_room": {
+                                        "type": "integer"
+                                    },
+                                    "date_start": {
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "date_end": {
+                                        "type": "string",
+                                        "format": "date"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
         }
     }
 }

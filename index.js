@@ -3,6 +3,7 @@ const app = express();
 const port = 3000;
 const roomsRoutes = require('./routes/roomsRoutes');
 const clientsRoutes = require('./routes/clientsRoutes');
+const reservationsRoutes = require('./routes/reservationsRoutes');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
 
@@ -13,6 +14,7 @@ app.use(express.json());
 // ATTENTION : Toutes les routes définies dans roomsRoutes.js commenceront par /rooms
 app.use ('/rooms', roomsRoutes);
 app.use ('/clients', clientsRoutes);
+app.use ('/reservations', reservationsRoutes);
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
