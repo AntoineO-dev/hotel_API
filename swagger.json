@@ -1193,6 +1193,260 @@
                     }
                 }
             }
+        },
+        "comment" : "payments",
+        "/payments" : {
+            "get": {
+                "operationId": "payments",
+                "tags": [
+                    "Payments"
+                ],
+                "description": "Récupère la liste des paiements",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "id_payment": {
+                                        "type": "integer"
+                                    },
+                                    "id_reservation": {
+                                        "type": "integer"
+                                    },
+                                    "payment_date": {
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "payment_amount": {
+                                        "type": "number",
+                                        "format": "float"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/payments/amount/{amount}" : {
+            "get": {
+                "operationId": "payments_amount",
+                "tags": [
+                    "Payments"
+                ],
+                "description": "Récupère la liste des paiements d'un montant donné",
+                "parameters": [
+                    {
+                        "name": "amount",
+                        "in": "path",
+                        "required": true,
+                        "type": "number",
+                        "format": "float"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "id_payment": {
+                                        "type": "integer"
+                                    },
+                                    "id_reservation": {
+                                        "type": "integer"
+                                    },
+                                    "payment_date": {
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "payment_amount": {
+                                        "type": "number",
+                                        "format": "float"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/payments/paymentsamount/:MONTH/:YEAR" : {
+            "get": {
+                "operationId": "payments_paymentsamount",
+                "tags": [
+                    "Payments"
+                ],
+                "description": "Récupère la liste des paiements d'un mois et d'une année donnée",
+                "parameters": [
+                    {
+                        "name": "MONTH",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "YEAR",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "id_payment": {
+                                        "type": "integer"
+                                    },
+                                    "id_reservation": {
+                                        "type": "integer"
+                                    },
+                                    "payment_date": {
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "payment_amount": {
+                                        "type": "number",
+                                        "format": "float"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+            
+        },
+        "/payments/method/{method}" : {
+            "get": {
+                "operationId": "payments_method",
+                "tags": [
+                    "Payments"
+                ],
+                "description": "Récupère la liste des paiements d'une méthode donnée",
+                "parameters": [
+                    {
+                        "name": "method",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "id_payment": {
+                                        "type": "integer"
+                                    },
+                                    "id_reservation": {
+                                        "type": "integer"
+                                    },
+                                    "payment_date": {
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "payment_amount": {
+                                        "type": "number",
+                                        "format": "float"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/payments/:status" : {
+            "get": {
+                "operationId": "payments_status",
+                "tags": [
+                    "Payments"
+                ],
+                "description": "Récupère la liste des paiements d'un certain statut",
+                "parameters": [
+                    {
+                        "name": "status",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "id_payment": {
+                                        "type": "integer"
+                                    },
+                                    "id_reservation": {
+                                        "type": "integer"
+                                    },
+                                    "payment_date": {
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "payment_amount": {
+                                        "type": "number",
+                                        "format": "float"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
         }
+
+
     }
 }
