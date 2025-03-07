@@ -4,6 +4,7 @@ const port = 3000;
 const roomsRoutes = require('./routes/roomsRoutes');
 const clientsRoutes = require('./routes/clientsRoutes');
 const reservationsRoutes = require('./routes/reservationsRoutes');
+const paymentsRoutes = require('./routes/paymentsRoutes');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
 
@@ -15,6 +16,7 @@ app.use(express.json());
 app.use ('/rooms', roomsRoutes);
 app.use ('/clients', clientsRoutes);
 app.use ('/reservations', reservationsRoutes);
+app.use ('/payments', paymentsRoutes);
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
