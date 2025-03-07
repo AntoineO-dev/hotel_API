@@ -5,6 +5,8 @@ const roomsRoutes = require('./routes/roomsRoutes');
 const clientsRoutes = require('./routes/clientsRoutes');
 const reservationsRoutes = require('./routes/reservationsRoutes');
 const paymentsRoutes = require('./routes/paymentsRoutes');
+const inclureRoutes = require('./routes/inclureRoutes');
+const servicesRoutes = require('./routes/serviceRoutes');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
 
@@ -17,6 +19,8 @@ app.use ('/rooms', roomsRoutes);
 app.use ('/clients', clientsRoutes);
 app.use ('/reservations', reservationsRoutes);
 app.use ('/payments', paymentsRoutes);
+app.use ('/inclure', inclureRoutes);
+app.use ('/services', servicesRoutes);
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
