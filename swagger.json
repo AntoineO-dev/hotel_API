@@ -232,7 +232,6 @@
                                     }
                                 }
                             }
-                            
                         }
                     },
                     "404": {
@@ -408,7 +407,6 @@
                     }
                 }
             }
-
         },
         "/rooms/pricesBelow/{price}": {
             "get": {
@@ -528,9 +526,8 @@
                     }
                 }
             }
-
         },
-        "comment" : "clients",
+        "comment": "clients",
         "/clients": {
             "get": {
                 "operationId": "clients",
@@ -628,7 +625,7 @@
                 }
             }
         },
-        "/clients/reservationAbove/{total_cost}" : {
+        "/clients/reservationAbove/{total_cost}": {
             "get": {
                 "operationId": "clients_reservationAbove",
                 "tags": [
@@ -680,9 +677,9 @@
                         "description": "Internal server error"
                     }
                 }
-            }   
+            }
         },
-        "/clients/reservationBelow/{total_cost}" : {
+        "/clients/reservationBelow/{total_cost}": {
             "get": {
                 "operationId": "clients_reservationBelow",
                 "tags": [
@@ -734,9 +731,9 @@
                         "description": "Internal server error"
                     }
                 }
-            }   
+            }
         },
-        "/clients/infosClients" : {
+        "/clients/infosClients": {
             "get": {
                 "operationId": "infosClients",
                 "tags": [
@@ -780,7 +777,7 @@
                 }
             }
         },
-        "/clients/reservationemail/{MONTH}/{YEAR}" : {
+        "/clients/reservationemail/{MONTH}/{YEAR}": {
             "get": {
                 "operationId": "clients_reservationemail",
                 "tags": [
@@ -839,7 +836,7 @@
                 }
             }
         },
-        "/clients/reservationbyroom_type/{room_type}" : {
+        "/clients/reservationbyroom_type/{room_type}": {
             "get": {
                 "operationId": "clients_reservationbyroom_type",
                 "tags": [
@@ -892,7 +889,7 @@
                 }
             }
         },
-        "/clients/revenumax" : {
+        "/clients/revenumax": {
             "get": {
                 "operationId": "revenumax",
                 "tags": [
@@ -935,8 +932,8 @@
                 }
             }
         },
-        "comment" : "reservations",
-        "/reservations/{room_number}" : {
+        "comment": "reservations",
+        "/reservations/{room_number}": {
             "get": {
                 "operationId": "reservations_room_number",
                 "tags": [
@@ -989,7 +986,7 @@
                 }
             }
         },
-        "/reservations/validated" : {
+        "/reservations/validated": {
             "get": {
                 "operationId": "reservations_validated",
                 "tags": [
@@ -1035,7 +1032,7 @@
                 }
             }
         },
-        "/reservations/passed" : {
+        "/reservations/passed": {
             "get": {
                 "operationId": "reservations_passed",
                 "tags": [
@@ -1081,7 +1078,7 @@
                 }
             }
         },
-        "/reservations/cost_average" : {
+        "/reservations/cost_average": {
             "get": {
                 "operationId": "cost_average",
                 "tags": [
@@ -1111,7 +1108,7 @@
                 }
             }
         },
-        "/reservations/total_cost" : {
+        "/reservations/total_cost": {
             "get": {
                 "operationId": "total_cost",
                 "tags": [
@@ -1141,7 +1138,7 @@
                 }
             }
         },
-        "/reservations/type/{type}" : {
+        "/reservations/type/{type}": {
             "get": {
                 "operationId": "reservations_type",
                 "tags": [
@@ -1194,8 +1191,8 @@
                 }
             }
         },
-        "comment" : "payments",
-        "/payments" : {
+        "comment": "payments",
+        "/payments": {
             "get": {
                 "operationId": "payments",
                 "tags": [
@@ -1238,7 +1235,7 @@
                 }
             }
         },
-        "/payments/amount/{amount}" : {
+        "/payments/amount/{amount}": {
             "get": {
                 "operationId": "payments_amount",
                 "tags": [
@@ -1289,7 +1286,7 @@
                 }
             }
         },
-        "/payments/paymentsamount/:MONTH/:YEAR" : {
+        "/payments/paymentsamount/:MONTH/:YEAR": {
             "get": {
                 "operationId": "payments_paymentsamount",
                 "tags": [
@@ -1344,9 +1341,8 @@
                     }
                 }
             }
-            
         },
-        "/payments/method/{method}" : {
+        "/payments/method/{method}": {
             "get": {
                 "operationId": "payments_method",
                 "tags": [
@@ -1396,7 +1392,7 @@
                 }
             }
         },
-        "/payments/:status" : {
+        "/payments/:status": {
             "get": {
                 "operationId": "payments_status",
                 "tags": [
@@ -1445,8 +1441,458 @@
                     }
                 }
             }
+        },
+        "comment": "services",
+        "/services": {
+            "get": {
+                "operationId": "services",
+                "tags": [
+                    "Services"
+                ],
+                "description": "Récupère la liste des services",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "id_service": {
+                                        "type": "integer"
+                                    },
+                                    "service_name": {
+                                        "type": "string"
+                                    },
+                                    "service_price": {
+                                        "type": "number",
+                                        "format": "float"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/services/price/{price}": {
+            "get": {
+                "operationId": "services_price",
+                "tags": [
+                    "Services"
+                ],
+                "description": "Récupère la liste des services d'un prix donné",
+                "parameters": [
+                    {
+                        "name": "price",
+                        "in": "path",
+                        "required": true,
+                        "type": "number",
+                        "format": "float"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "id_service": {
+                                        "type": "integer"
+                                    },
+                                    "service_name": {
+                                        "type": "string"
+                                    },
+                                    "service_price": {
+                                        "type": "number",
+                                        "format": "float"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/services/frequent/:quantity": {
+            "get": {
+                "operationId": "services_frequent",
+                "tags": [
+                    "Services"
+                ],
+                "description": "Récupère la liste des services les plus fréquemment utilisés",
+                "parameters": [
+                    {
+                        "name": "quantity",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "id_service": {
+                                        "type": "integer"
+                                    },
+                                    "service_name": {
+                                        "type": "string"
+                                    },
+                                    "service_price": {
+                                        "type": "number",
+                                        "format": "float"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/services/total_cost/:type": {
+            "get": {
+                "operationId": "services_total_cost",
+                "tags": [
+                    "Services"
+                ],
+                "description": "Récupère le coût total des services d'un certain type",
+                "parameters": [
+                    {
+                        "name": "type",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "number",
+                            "properties": {
+                                "Coût Total": {
+                                    "type": "number",
+                                    "format": "float"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/services/:id": {
+            "get": {
+                "operationId": "services_id",
+                "tags": [
+                    "Services"
+                ],
+                "description": "Récupère le service d'un certain id",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "id_service": {
+                                    "type": "integer"
+                                },
+                                "service_name": {
+                                    "type": "string"
+                                },
+                                "service_price": {
+                                    "type": "number",
+                                    "format": "float"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "comment": "inclure",
+        "/inclure": {
+            "get": {
+                "operationId": "inclure",
+                "tags": [
+                    "Inclure"
+                ],
+                "description": "Récupère la liste des services inclus dans les chambres",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "id_inclure": {
+                                        "type": "integer"
+                                    },
+                                    "id_room": {
+                                        "type": "integer"
+                                    },
+                                    "id_service": {
+                                        "type": "integer"
+                                    },
+                                    "service_name": {
+                                        "type": "string"
+                                    },
+                                    "service_price": {
+                                        "type": "number",
+                                        "format": "float"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/inclure/inclureInReservation/:id": {
+            "get": {
+                "operationId": "inclure_inclureInReservation",
+                "tags": [
+                    "Inclure"
+                ],
+                "description": "Récupère la liste des services inclus dans une réservation donnée",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "id_inclure": {
+                                        "type": "integer"
+                                    },
+                                    "id_room": {
+                                        "type": "integer"
+                                    },
+                                    "id_service": {
+                                        "type": "integer"
+                                    },
+                                    "service_name": {
+                                        "type": "string"
+                                    },
+                                    "service_price": {
+                                        "type": "number",
+                                        "format": "float"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/inclure/inclureInReservation/total_cost/:id": {
+            "get": {
+                "operationId": "inclure_inclureInReservation_total_cost",
+                "tags": [
+                    "Inclure"
+                ],
+                "description": "Récupère le coût total des services inclus dans une réservation donnée",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "number",
+                            "properties": {
+                                "Coût Total": {
+                                    "type": "number",
+                                    "format": "float"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/inclure/inclureInReservation/type/:type": {
+            "get": {
+                "operationId": "inclure_inclureInReservation_type",
+                "tags": [
+                    "Inclure"
+                ],
+                "description": "Récupère la liste des services inclus dans une réservation d'un certain type de chambre",
+                "parameters": [
+                    {
+                        "name": "type",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "id_inclure": {
+                                        "type": "integer"
+                                    },
+                                    "id_room": {
+                                        "type": "integer"
+                                    },
+                                    "id_service": {
+                                        "type": "integer"
+                                    },
+                                    "service_name": {
+                                        "type": "string"
+                                    },
+                                    "service_price": {
+                                        "type": "number",
+                                        "format": "float"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/inclure/inclureInReservation/most_used/:id_service" : {
+            "get": {
+                "operationId": "inclure_inclureInReservation_most_used",
+                "tags": [
+                    "Inclure"
+                ],
+                "description": "Récupère la liste des services inclus les plus utilisés",
+                "parameters": [
+                    {
+                        "name": "id_service",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "id_inclure": {
+                                        "type": "integer"
+                                    },
+                                    "id_room": {
+                                        "type": "integer"
+                                    },
+                                    "id_service": {
+                                        "type": "integer"
+                                    },
+                                    "service_name": {
+                                        "type": "string"
+                                    },
+                                    "service_price": {
+                                        "type": "number",
+                                        "format": "float"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
         }
-
-
     }
 }
