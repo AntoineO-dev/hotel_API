@@ -8,7 +8,7 @@ async function findAllRooms(req, res) {
     } catch (error) {
         console.error(error);
         res.status(500);
-        res.json({'message':'Une erreur est survenue lors de la récupération des chambres'});
+        res.json({ 'message': 'Une erreur est survenue lors de la récupération des chambres' });
     }
 }
 
@@ -20,8 +20,8 @@ async function findOneRoom(req, res) {
     } catch (error) {
         console.error(error);
         res.status(500);
-        res.json({'message':'Une erreur est survenue lors de la récupération de la chambre'});
-        
+        res.json({ 'message': 'Une erreur est survenue lors de la récupération de la chambre' });
+
     }
 }
 
@@ -33,7 +33,7 @@ async function findAvailableRooms(res) {
     } catch (error) {
         console.error(error);
         res.status(500);
-        res.json({'message':'Une erreur est survenue lors de la récupération des chambres disponibles'});
+        res.json({ 'message': 'Une erreur est survenue lors de la récupération des chambres disponibles' });
     }
 }
 
@@ -45,7 +45,7 @@ async function averageCapacity(res) {
     } catch (error) {
         console.error(error);
         res.status(500);
-        res.json({'message':'Une erreur est survenue lors de la récupération de la capacité moyenne des chambres'});
+        res.json({ 'message': 'Une erreur est survenue lors de la récupération de la capacité moyenne des chambres' });
     }
 }
 
@@ -57,7 +57,7 @@ async function pricesAboves(req, res) {
     } catch (error) {
         console.error(error);
         res.status(500);
-        res.json({'message':'Une erreur est survenue lors de la récupération des chambres'});
+        res.json({ 'message': 'Une erreur est survenue lors de la récupération des chambres' });
     }
 }
 
@@ -69,7 +69,7 @@ async function findByType(req, res) {
     } catch (error) {
         console.error(error);
         res.status(500);
-        res.json({'message':'Une erreur est survenue lors de la récupération des chambres'});
+        res.json({ 'message': 'Une erreur est survenue lors de la récupération des chambres' });
     }
 }
 
@@ -81,11 +81,11 @@ async function findByCapacity(req, res) {
     } catch (error) {
         console.error(error);
         res.status(500);
-        res.json({'message':'Une erreur est survenue lors de la récupération des chambres'});
+        res.json({ 'message': 'Une erreur est survenue lors de la récupération des chambres' });
     }
 }
 
-async function findByTypeAndAvailable (req, res) {
+async function findByTypeAndAvailable(req, res) {
     try {
         const rooms = await RoomsService.findByTypeAndAvailable(req.params.type);
         res.status(200);
@@ -93,7 +93,7 @@ async function findByTypeAndAvailable (req, res) {
     } catch (error) {
         console.error(error);
         res.status(500);
-        res.json({'message':'Une erreur est survenue lors de la récupération des chambres'});
+        res.json({ 'message': 'Une erreur est survenue lors de la récupération des chambres' });
     }
 }
 
@@ -105,7 +105,7 @@ async function pricesBellow(req, res) {
     } catch (error) {
         console.error(error);
         res.status(500);
-        res.json({'message':'Une erreur est survenue lors de la récupération des chambres'});
+        res.json({ 'message': 'Une erreur est survenue lors de la récupération des chambres' });
     }
 }
 
@@ -117,7 +117,43 @@ async function pricesBetween(req, res) {
     } catch (error) {
         console.error(error);
         res.status(500);
-        res.json({'message':'Une erreur est survenue lors de la récupération des chambres'});
+        res.json({ 'message': 'Une erreur est survenue lors de la récupération des chambres' });
+    }
+}
+
+async function createRoom(req, res) {
+    try {
+        const room = await RoomsService.createRoom(req.body);
+        res.status(201);
+        res.json(room);
+    } catch (error) {
+        console.error(error);
+        res.status(500);
+        res.json({ 'message': 'Une erreur est survenue lors de la création de la chambre' });
+    }
+}
+
+async function updateRoom(req, res) {
+    try {
+        const room = await RoomsService.updateRoom(req.params.id, req.body);
+        res.status(200);
+        res.json(room);
+    } catch (error) {
+        console.error(error);
+        res.status(500);
+        res.json({ 'message': 'Une erreur est survenue lors de la modification de la chambre' });
+    }
+}
+
+async function deleteRoom(req, res) {
+    try {
+        const rooms = await RoomsService.deleteRoom(req.params.id);
+        res.status(204);
+        res.json();
+    } catch (error) {
+        console.error(error);
+        res.status(500);
+        res.json({ 'message': 'Une erreur est survenue lors de la suppression de la chambre' });
     }
 }
 
@@ -133,4 +169,7 @@ module.exports = {
     findByTypeAndAvailable,
     pricesBellow,
     pricesBetween,
+    createRoom,
+    updateRoom,
+    deleteRoom
 }

@@ -36,10 +36,31 @@ function findTotalCostByType(type) {
         })
 }
 
+async function createService(service) {
+    return connection.promise().query('INSERT INTO services (service_name, price) VALUES (?, ?)', [service.service_name, service.price]).then((results) => {
+        return findServiceById(results[0].insertId);
+    })
+}
+
+async function updateService(id, service) {
+    return connection.promise().query('UPDATE services SET service_name = ?, price = ? WHERE id_service = ?', [service.service_name, service.price, id]).then((results) => {
+        return findServiceById(id);
+    })
+}
+
+async function deleteService(id) {
+    return connection.promise().query('DELETE FROM services WHERE id_service = ?', [id]).then((results) => {
+        return results[0];
+    })
+}
+
 module.exports = {
     findAllServices,
     findServiceByPrice,
     findServiceByQuantity,
     findServiceById,
-    findTotalCostByType
+    findTotalCostByType,
+    createService,
+    updateService,
+    deleteService
 }

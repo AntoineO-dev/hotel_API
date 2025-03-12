@@ -30,10 +30,31 @@ function findMostUsedService(id_service) {
     })
 }
 
+async function addInclure(inclure) {
+    return connection.promise().query('INSERT INTO inclure SET ?', inclure).then((results) => {
+        return { id: results[0].insertId, ...inclure }
+    })
+}
+
+async function updateInclure(inclure) {
+    return connection.promise().query('UPDATE inclure SET ? WHERE SET ?', [inclure, inclure.id_inclure]).then((results) => {
+        return inclure;
+    })
+}
+
+async function deleteInclure(id) {
+    return connection.promise().query('DELETE FROM inclure SET ?', [id]).then((results) => {
+        return results[0];
+    })
+}
+
 module.exports = {
     findAllInclure,
     findInclureInReservation,
     findTotalCostInReservation,
     findInclureByType,
-    findMostUsedService
+    findMostUsedService,
+    addInclure,
+    updateInclure,
+    deleteInclure
 }

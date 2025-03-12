@@ -18,4 +18,16 @@ router.get('/method/:method',(req,res) => {paymentsController.findPaymentByMetho
 // GET /payments/:status
 router.get('/status/:status',(req,res) => {paymentsController.findPaymentByStatus(req,res)});
 
+// GET /payments/:id
+router.get('/:id',(req,res) => {paymentsController.findPaymentById(req,res)});
+
+// POST /payments
+router.post('/',(req,res) => {paymentsController.createPayment(req,res)});
+
+//PATCH /payments/:id
+router.patch('/:id',(req,res) => {paymentsController.updatePayment(req,res)});
+
+//DELETE /payments/:id
+router.delete('/:id',(req,res) => {paymentsController.deletePayment(req,res)});
+
 module.exports = router;

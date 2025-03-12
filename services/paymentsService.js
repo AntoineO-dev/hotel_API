@@ -31,12 +31,40 @@ function findPaymentByStatus(status) {
     })
 }
 
+function findPaymentById(id) {
+    return connection.promise().query('SELECT * FROM payments WHERE id_payments = ?', [id]).then((results) => {
+        return results[0];
+    })
+}
+
+async function createPayment(payment) {
+    return connection.promise().query('INSERT INTO payments SET ?', [payment]).then((results) => {
+        return findPaymentById(results[0].insertId);
+    })
+}
+
+async function updatePayment(payment) {
+    return connection.promise().query('UPDATE payments SET ? WHERE id_payments = ?', [payment, payment.id_payments]).then(() => {
+        return findPaymentById(payment.id_payments);
+    })
+}
+
+async function deletePayment(id) {
+    return connection.promise().query('DELETE FROM payments WHERE id_payments = ?', [id]).then(() => {
+        return { id_payments: id }
+    })
+}
+
 
 module.exports = {
     findAllPayments,
     findPaymentByMethod,
     findPaymentsAmountByYear,
     findPaymentByAmount,
-    findPaymentByStatus
+    findPaymentByStatus,
+    findPaymentById,
+    createPayment,
+    updatePayment,
+    deletePayment
     
 }

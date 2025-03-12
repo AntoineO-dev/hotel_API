@@ -18,4 +18,13 @@ router.get('/total_cost/:type',(req,res) => {serviceController.findTotalCostByTy
 //GET /services/:id
 router.get('/:id',(req,res) => {serviceController.findServiceById(req,res)});
 
+//POST /services
+router.post('/',(req,res) => {serviceController.createService(req,res)});
+
+//PATCH /services/:id
+router.patch('/:id',(req,res) => {serviceController.updateService(req,res)});
+
+//DELETE /services/:id
+router.delete('/:id',(req,res) => {serviceController.deleteService(req,res)});
+
 module.exports = router;

@@ -49,6 +49,29 @@ function findRevenueMax() {
     })
 }
 
+function findClientById(id) {
+    return connection.promise().query('SELECT * FROM clients WHERE id_client = ?', id).then((results) => {
+        return results[0][0];
+    })
+}
+
+async function createClient(client) {
+    return connection.promise().query('INSERT INTO clients SET ?', client).then((results) => {
+        return {id: results[0].insertId, ...client};
+    })
+}
+
+async function updateClient(id, client) {
+    return connection.promise().query('UPDATE clients SET ? WHERE id_client = ?', [client, id]).then((results) => {
+        return {id: id, ...client};
+    })
+}
+
+async function deleteClient(id) {
+    return connection.promise().query('DELETE FROM clients WHERE id_client = ?', id).then((results) => {
+        return results[0];
+    })
+}
 
 
 module.exports = {
@@ -59,5 +82,9 @@ module.exports = {
     findInfosClients,
     findReservationEmail,
     findReservationByRoomType,
-    findRevenueMax
+    findRevenueMax,
+    findClientById,
+    createClient,
+    updateClient,
+    deleteClient
 }
