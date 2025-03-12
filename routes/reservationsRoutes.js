@@ -22,6 +22,18 @@ router.get('/:total_cost',(req,res) => {reservationsController.findReservationBy
 //GET /reservations/type/:type
 router.get('/type/:type',(req,res) => {reservationsController.findReservationByType(req,res)});
 
+//GET /reservations/:id
+router.get('/:id',(req,res) => {reservationsController.findReservationById(req,res)});
+
+//POST /reservations
+router.post('/',(req,res) => {reservationsController.createReservation(req,res)});
+
+//PATCH /reservations/:id
+router.patch('/:id',(req,res) => {reservationsController.updateReservation(req,res)});
+
+//DELETE /reservations/:id
+router.delete('/:id',(req,res) => {reservationsController.deleteReservation(req,res)});
+
 
 
 

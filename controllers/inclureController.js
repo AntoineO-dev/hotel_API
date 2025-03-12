@@ -25,11 +25,29 @@ async function findMostUsedService(req,res){
     res.json(inclure);
 }
 
+async function addInclure(req,res){
+    const inclure = await inclureService.addInclure(req.body);
+    res.json(inclure);
+}
+
+async function updateInclure(req,res){
+    const inclure = await inclureService.updateInclure(req.body);
+    res.json(inclure);
+}
+
+async function deleteInclure(req,res){
+    const inclure = await inclureService.deleteInclure(req.params.id);
+    res.json(inclure);
+}
+
 module.exports = {
     findAllInclure,
     findInclureInReservation,
     findTotalCostInReservation,
     findInclureByType,
-    findMostUsedService
+    findMostUsedService,
+    addInclure,
+    updateInclure,
+    deleteInclure
 
 }

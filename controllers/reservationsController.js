@@ -72,11 +72,64 @@ async function findReservationByRooms(req, res) {
     }
 }
 
+async function findReservationById(req, res) {
+    try {
+        const clients = await reservationsService.findReservationById(req.params.id);
+        res.status(200);
+        res.json(clients);
+    } catch (error) {
+        console.error(error);
+        res.status(500);
+        res.json({'message':'Une erreur est survenue lors de la récupération des réservations'});
+    }
+} 
+
+async function createReservation(req, res) {
+    try {
+        const clients = await reservationsService.createReservation(req.body);
+        res.status(200);
+        res.json(clients);
+    } catch (error) {
+        console.error(error);
+        res.status(500);
+        res.json({'message':'Une erreur est survenue lors de la création de la réservation'});
+    }
+}
+
+async function updateReservation(req, res) {
+    try {
+        const clients = await reservationsService.updateReservation(req.params.id, req.body);
+        res.status(200);
+        res.json(clients);
+    } catch (error) {
+        console.error(error);
+        res.status(500);
+        res.json({'message':'Une erreur est survenue lors de la modification de la réservation'});
+    }
+}
+
+async function deleteReservation(req, res) {
+    try {
+        const clients = await reservationsService.deleteReservation(req.params.id);
+        res.status(200);
+        res.json(clients);
+    } catch (error) {
+        console.error(error);
+        res.status(500);
+        res.json({'message':'Une erreur est survenue lors de la suppression de la réservation'});
+    }
+}
+
+
 module.exports = {
     findAllValidatedReservations,
     findCostAverage,
     findReservationByPrice,
     findAllPassedReservations,
     findReservationByType,
-    findReservationByRooms
+    findReservationByRooms,
+    findReservationById,
+    createReservation,
+    updateReservation,
+    deleteReservation
 };

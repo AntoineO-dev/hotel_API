@@ -96,6 +96,67 @@ async function findRevenueMax(req, res) {
     }
 }
 
+async function findReservation(req, res) {
+    try {
+        const clients = await clientsService.findReservation(req.params.id,req.params.year,res);
+        res.status(200);
+        res.json(clients);
+    } catch (error) {
+        console.error(error);
+        res.status(500);
+        res.json({'message':'Une erreur est survenue lors de la récupération des clients'});
+    }
+}
+
+async function findOneClient(req, res) {
+    try {
+        const clients = await clientsService.findOneClient(req.params.id);
+        res.status(200);
+        res.json(clients);
+    } catch (error) {
+        console.error(error);
+        res.status(500);
+        res.json({'message':'Une erreur est survenue lors de la récupération du client'});
+    }
+}
+
+async function createClient(req, res) {
+    try {
+        const clients = await clientsService.createClient(req.body);
+        res.status(201);
+        res.json(clients);
+    } catch (error) {
+        console.error(error);
+        res.status(500);
+        res.json({'message':'Une erreur est survenue lors de la création du client'});
+    }
+}
+
+async function updateClient(req, res) {
+    try {
+        const clients = await clientsService.updateClient(req.params.id,req.body);
+        res.status(200);
+        res.json(clients);
+    } catch (error) {
+        console.error(error);
+        res.status(500);
+        res.json({'message':'Une erreur est survenue lors de la modification du client'});
+    }
+}
+
+async function deleteClient(req, res) {
+    try {
+        const clients = await clientsService.deleteClient(req.params.id);
+        res.status(200);
+        res.json(clients);
+    } catch (error) {
+        console.error(error);
+        res.status(500);
+        res.json({'message':'Une erreur est survenue lors de la suppression du client'});
+    }
+}
+
+
 module.exports = {
     findAllClients,
     findReservation,
@@ -105,4 +166,9 @@ module.exports = {
     findReservationEmail,
     findReservationByRoomType,
     findRevenueMax,
+    findOneClient,
+    createClient,
+    updateClient,
+    deleteClient
+    
 }

@@ -27,4 +27,16 @@ router.get('/reservationbyroom_type/:room_type',(req,res) => {clientsController.
 // GET /clients/revenumax
 router.get('/revenumax',(req,res) => {clientsController.findRevenueMax(req,res)});
 
+//GET /clients/:id
+router.get('/:id',(req,res) => {clientsController.findOneClient(req,res)});
+
+//POST /clients
+router.post('/',(req,res) => {clientsController.createClient(req,res)});
+
+//PATH /clients/:id
+router.patch('/:id',(req,res) => {clientsController.updateClient(req,res)});
+
+//DELETE /clients/:id
+router.delete('/:id',(req,res) => {clientsController.deleteClient(req,res)});
+
 module.exports = router;

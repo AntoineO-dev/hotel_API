@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const app = express();
 const port = 3000;
 const roomsRoutes = require('./routes/roomsRoutes');
@@ -12,6 +13,7 @@ const swaggerDocument = require('./swagger.json');
 
 // Précise à mon API d'utiliser le format JSON
 app.use(express.json());
+app.use(cors());
 
 // Précise à mon API d'utiliser les routes définies dans le fichier roomsRoutes.js
 // ATTENTION : Toutes les routes définies dans roomsRoutes.js commenceront par /rooms

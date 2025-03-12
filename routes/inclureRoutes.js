@@ -18,6 +18,13 @@ router.get('/inclureInReservation/type/:type', (req, res) => {inclureController.
 //GET /inclureInReservation/most_used
 router.get('/inclureInReservation/most_used/:id_service', (req, res) => {inclureController.findMostUsedService(req, res)});
 
+//POST /inclure
+router.post('/', (req, res) => {inclureController.addInclure(req, res)});
 
+//PATCH /inclure/inclureInReservation/:id
+router.patch('/inclureInReservation/:id', (req, res) => {inclureController.updateInclure(req, res)});
+
+//DELETE /inclure/inclureInReservation/:id
+router.delete('/inclureInReservation/:id', (req, res) => {inclureController.deleteInclure(req, res)});
 
 module.exports = router;
