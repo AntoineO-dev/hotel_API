@@ -1,4 +1,5 @@
 const clientsService = require('../services/clientsService');
+const bcrypt = require('bcryptjs');
 
 async function findAllClients(req, res) {
     try {
@@ -122,6 +123,8 @@ async function findOneClient(req, res) {
 
 async function createClient(req, res) {
     try {
+        //crypt le mot de passe
+        req.body.password = bcrypt.hashSync(req.body.password, 10);
         const clients = await clientsService.createClient(req.body);
         res.status(201);
         res.json(clients);
