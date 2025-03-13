@@ -8,19 +8,19 @@ function findAllClients() {
 }
 
 function findReservation(id, year) {
-    return connection.promise().query('SELECT * FROM clients INNER JOIN reservations ON reservations.id_client = clients.id_client WHERE YEAR(check_in_date) = ?', [id, year]).then((results) => {
+    return connection.promise().query('SELECT id_client, first_name, last_name, phone, registration_date, email FROM clients INNER JOIN reservations ON reservations.id_client = clients.id_client WHERE YEAR(check_in_date) = ?', [id, year]).then((results) => {
         return results[0];
     })
 }
 
 function findReservationAbove(total_cost) {
-    return connection.promise().query('SELECT * FROM clients INNER JOIN reservations ON reservations.id_client = clients.id_client WHERE total_cost >= ?', [total_cost]).then((results) => {
+    return connection.promise().query('SELECT id_client, first_name, last_name, phone, registration_date, email FROM clients INNER JOIN reservations ON reservations.id_client = clients.id_client WHERE total_cost >= ?', [total_cost]).then((results) => {
         return results[0];
     })
 }
 
 function findReservationBelow(total_cost) {
-    return connection.promise().query('SELECT * FROM clients INNER JOIN reservations ON reservations.id_client = clients.id_client WHERE total_cost <= ?', [total_cost]).then((results) => {
+    return connection.promise().query('SELECT id_client, first_name, last_name, phone, registration_date, email FROM clients INNER JOIN reservations ON reservations.id_client = clients.id_client WHERE total_cost <= ?', [total_cost]).then((results) => {
         return results[0];
     })
 }
@@ -38,7 +38,7 @@ function findReservationEmail(MONTH, YEAR) {
 }
 
 function findReservationByRoomType(room_type) {
-    return connection.promise().query('SELECT * FROM clients INNER JOIN reservations ON reservations.id_client = clients.id_client INNER JOIN rooms ON rooms.id_room = reservations.id_room WHERE room_type = ?', [room_type]).then((results) => {
+    return connection.promise().query('SELECT id_client, first_name, last_name, phone, registration_date, email FROM clients INNER JOIN reservations ON reservations.id_client = clients.id_client INNER JOIN rooms ON rooms.id_room = reservations.id_room WHERE room_type = ?', [room_type]).then((results) => {
         return results[0];
     })
 }
@@ -50,7 +50,7 @@ function findRevenueMax() {
 }
 
 function findClientById(id) {
-    return connection.promise().query('SELECT * FROM clients WHERE id_client = ?', id).then((results) => {
+    return connection.promise().query('SELECT id_client, first_name, last_name, phone, registration_date, email FROM clients WHERE id_client = ?', id).then((results) => {
         return results[0][0];
     })
 }
